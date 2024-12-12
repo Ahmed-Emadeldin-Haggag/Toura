@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Toura Application</string>
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+</resources>
