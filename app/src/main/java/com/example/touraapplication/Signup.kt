@@ -20,17 +20,23 @@ class Signup: AppCompatActivity() {
         setContentView(binding.root)
         firebaseAuth = FirebaseAuth.getInstance()
 
+        // Sign Up Button
         binding.signupButton.setOnClickListener {
-            val username = binding.SignupUsername.text.toString()
+            val email = binding.SignupUsername.text.toString()
             val password = binding.signupPassword.text.toString()
 
-            if (isValidInput(username, password)) {
-                firebaseAuth.createUserWithEmailAndPassword(username, password)
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please enter both email and password", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (isValidInput(email, password)) {
+                firebaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
+                        // After successful signup, redirect to Login
                         if (task.isSuccessful) {
-                            val intent = Intent(this, Login::class.java)
-                            startActivity(intent)
-                            finish()
+                             val intent = Intent(this, MainActivity::class.java)
+                             startActivity(intent)
+                             finish()
 
                         } else {
                             val exception = task.exception
@@ -41,6 +47,12 @@ class Signup: AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Please fix the errors", Toast.LENGTH_SHORT).show()
             }
+        }
+        // Log In Button Click
+        binding.loginButton.setOnClickListener {
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 

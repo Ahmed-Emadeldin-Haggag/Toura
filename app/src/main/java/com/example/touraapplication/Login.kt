@@ -19,18 +19,20 @@ class Login : AppCompatActivity() {
         setContentView(binding.root)
         firebaseAuth = FirebaseAuth.getInstance()
 
+        // Login Button
         binding.loginButton.setOnClickListener {
             val username = binding.loginEmail.text.toString()
             val password = binding.loginPassword.text.toString()
+            if (username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please enter both email and password", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             firebaseAuth.signInWithEmailAndPassword(username, password)
                 .addOnCompleteListener { task ->
                     // if it login Successfully
                     if (task.isSuccessful) {
-
-                        val user = firebaseAuth.currentUser
-                        Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
-
                         //  go to MainActivity
+                        Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                         finish()
@@ -39,22 +41,16 @@ class Login : AppCompatActivity() {
                         // Print the error
                         Toast.makeText(this, "Authentication failed: $exceptionMessage", Toast.LENGTH_SHORT).show()
 
-                        // check if user name already exist
-                        if (exceptionMessage?.contains("There is no user record corresponding to this identifier") == true) {
-                            // if not got to signup
-                            val intent = Intent(this, Signup::class.java)
-                            startActivity(intent)
 
-
-                        }
                     }
                 }
-
-
-
-
-
         }
+
+            // Sign Up Button Click
+            binding.signupButton.setOnClickListener {
+                val intent = Intent(this, Signup::class.java)
+                startActivity(intent)
+            }
     }
 
 }

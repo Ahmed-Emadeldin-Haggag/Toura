@@ -1,5 +1,6 @@
 package com.example.touraapplication
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,10 +37,17 @@ class MainActivity : AppCompatActivity() {
     private fun updateTours() {
         val newTourList = listOf(
             Tour("Nile River Cruise", "May 12, 2024", R.drawable.nile_cruise))
-//        touralist.addAll(newTourList)
-//        tourAdapter.notifyDataSetChanged()
+//        touralist.addAll(newTourList)  // Add new tours to the list
+//        tourAdapter.notifyDataSetChanged() // Notify adapter of the change
+//    }
+    }
+
+    override fun onBackPressed() {
+        // Exit the app when back button is pressed
+        finishAffinity()// Close all activities and exit the app
     }
 }
+
 
 
 

@@ -5,8 +5,7 @@
     android:id="@+id/signup"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:actionBarNavMode="standard"
-    android:orientation="vertical">
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -22,10 +21,8 @@
         android:id="@+id/SignupUsername"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:background="@drawable/rounded_rectangle"
-        android:drawablePadding="8dp"
         android:hint="@string/user_name"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,27 +33,36 @@
         android:id="@+id/signupPassword"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_rectangle"
-        android:drawablePadding="8dp"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.366"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SignupUsername" />
 
     <Button
         android:id="@+id/signupButton"
         android:layout_width="match_parent"
-        android:text="@string/sign_up"
         android:layout_height="70dp"
-        android:textSize="18sp"
+        android:text="@string/sign_up"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signupPassword" />
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:text="Have an account? login"
+        android:textSize="20sp"
+        android:background="?android:attr/selectableItemBackground"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/signupButton"
+        app:layout_constraintStart_toStartOf="@+id/signupButton"
+        app:layout_constraintTop_toBottomOf="@+id/signupButton" />
 </androidx.constraintlayout.widget.ConstraintLayout >
 
 
