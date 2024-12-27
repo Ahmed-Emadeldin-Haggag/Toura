@@ -1,6 +1,13 @@
 <resources>
-    <string name="app_name">Toura Application</string>
+    <string name="app_name">Toura</string>
     <string name="user_name">User Name</string>
     <string name="password">Password</string>
     <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign up</string>
+    <string name="login">Login</string>
+    <string name="toura_title">Toura Title</string>
+    <string name="date">Date</string>
+    <string name="price">Price</string>
+    <string name="description">Description</string>
+    <string name="place">Place</string>
 </resources>

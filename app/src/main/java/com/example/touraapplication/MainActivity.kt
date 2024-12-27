@@ -1,82 +1,45 @@
 package com.example.touraapplication
 
-import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.touraapplication.databinding.ActivityMainBinding
-
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.touraapplication.databinding.HomepageBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: HomepageBinding
+    private lateinit var tourAdapter: MyAdapter
+
+    private val touralist = mutableListOf(
+        Tour("Pyramids of Giza", "March 10, 2024", R.drawable.pyramids_of_giza),
+        Tour("Luxor Temples", "April 5, 2024", R.drawable.luxor_temples),
+        Tour("Nile River Cruise", "May 12, 2024", R.drawable.nile_cruise)
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = HomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.signinbutton.setOnClickListener {
-            val username = binding.username.text.toString()
-            val password = binding.password.text.toString()
+        // Set up RecyclerView
+        tourAdapter = MyAdapter(touralist)
+        binding.rvMovies.layoutManager = LinearLayoutManager(this)
+        binding.rvMovies.adapter = tourAdapter
 
-            if (isValidInput(username, password)) {
-                val intent = Intent(this, HomePage::class.java)
-                intent.putExtra("user_name", username)
-                startActivity(intent)
-            }
-        }
+        updateTours()
+    }
+    data class Tour(
+        val title: String,
+        val date: String,
+        val imageResId: Int
+    )
 
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
-
-//        var usernameInput= findViewById<EditText>(R.id.username)
-//        val passwordInput= findViewById<EditText>(R.id.password)
-//        val loginBtn= findViewById<Button>(R.id.signinbutton)
-
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById<ConstraintLayout>(R.id.login)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-
-
-        }
-    private fun isValidInput(username: String, password: String): Boolean {
-
-        // Check if the user name is not empty
-        if (TextUtils.isEmpty(username)) {
-            binding.username.error = "Username cannot be empty"
-            return false
-        }
-
-        // Check if the password is not empty
-        if (TextUtils.isEmpty(password)) {
-            binding.password.error = "Password cannot be empty"
-            return false
-        }
-
-        // Check if the password has at least 8 characters
-        if (password.length < 8) {
-            binding.password.error = "Password must be at least 8 characters long" // Show error under password field
-            return false
-        }
-
-        // Check if the password contains at least one letter
-        if (!password.matches(".*[A-Za-z].*".toRegex())) {
-            binding.password.error = "Password must contain at least one letter" // Show error under password field
-            return false
-        }
-
-        // Check if the password contains at least one number
-        if (!password.matches(".*[0-9].*".toRegex())) {
-            binding.password.error = "Password must contain at least one number" // Show error under password field
-            return false
-        }
-
-        return true
+    private fun updateTours() {
+        val newTourList = listOf(
+            Tour("Nile River Cruise", "May 12, 2024", R.drawable.nile_cruise))
+//        touralist.addAll(newTourList)
+//        tourAdapter.notifyDataSetChanged()
     }
 }
+
+
+
