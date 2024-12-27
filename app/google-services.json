@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "407875073730",
+    "project_id": "toura-c3ec3",
+    "storage_bucket": "toura-c3ec3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:407875073730:android:0d21d95c7a2c134c4c2d5b",
+        "android_client_info": {
+          "package_name": "com.example.touraapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOjxE8yFtWhDKWE1LGdrJhUljM1_Oo-5E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
