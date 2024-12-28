@@ -36,7 +36,7 @@
         app:layout_constraintBottom_toTopOf="@+id/date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/description"
-        android:background="@color/white"/>
+/>
 
     <!-- Date TextView -->
     <TextView
@@ -50,8 +50,7 @@
         app:layout_constraintEnd_toEndOf="@+id/title"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/title"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        android:background="@color/white"/>
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -73,8 +72,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/date"
         app:layout_constraintTop_toBottomOf="@+id/date"
-        app:layout_constraintVertical_bias="0.68"
-        android:background="@color/white"/>
+        app:layout_constraintVertical_bias="0.68" />
 
 
     <!-- Description TextView -->
@@ -90,8 +88,7 @@
         app:layout_constraintEnd_toStartOf="@+id/image"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/date"
-        app:layout_constraintTop_toTopOf="@+id/image"
-        android:background="@color/white"/>
+        app:layout_constraintTop_toTopOf="@+id/image" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

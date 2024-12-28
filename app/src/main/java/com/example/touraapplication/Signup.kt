@@ -24,12 +24,10 @@ class Signup: AppCompatActivity() {
         binding.signupButton.setOnClickListener {
             val email = binding.SignupUsername.text.toString()
             val password = binding.signupPassword.text.toString()
+            val password2 = binding.checkpassword.text.toString()
 
-            if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Please enter both email and password", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-            if (isValidInput(email, password)) {
+
+            if (isValidInput(email, password,password2)) {
                 firebaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         // After successful signup, redirect to Login
@@ -56,7 +54,7 @@ class Signup: AppCompatActivity() {
         }
     }
 
-    private fun isValidInput(username: String, password: String): Boolean {
+    private fun isValidInput(username: String, password: String,password2:String): Boolean {
 
         // Check if the user name is not empty
         if (TextUtils.isEmpty(username)) {
@@ -85,6 +83,10 @@ class Signup: AppCompatActivity() {
         // Check if the password contains at least one number
         if (!password.matches(".*[0-9].*".toRegex())) {
             binding.signupPassword.error = "Password must contain at least one number"
+            return false
+        }
+        if(password!=password2) {
+            binding.signupPassword.error = "The passwords aren't the same"
             return false
         }
 
