@@ -24,7 +24,8 @@ class Login : AppCompatActivity() {
             val username = binding.loginEmail.text.toString()
             val password = binding.loginPassword.text.toString()
             if (username.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Please enter both email and password", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please enter both email and password", Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
             firebaseAuth.signInWithEmailAndPassword(username, password)
@@ -39,18 +40,21 @@ class Login : AppCompatActivity() {
                     } else {
                         val exceptionMessage = task.exception?.message
                         // Print the error
-                        Toast.makeText(this, "Authentication failed: $exceptionMessage", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            "Authentication failed: $exceptionMessage",
+                            Toast.LENGTH_SHORT
+                        ).show()
 
 
                     }
                 }
         }
 
-            // Sign Up Button Click
-            binding.signupButton.setOnClickListener {
-                val intent = Intent(this, Signup::class.java)
-                startActivity(intent)
-            }
+        // Sign Up Button Click
+        binding.signupButton.setOnClickListener {
+            val intent = Intent(this, Signup::class.java)
+            startActivity(intent)
+        }
     }
-
 }
