@@ -2,7 +2,6 @@ package com.example.touraapplication
 
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -17,7 +16,6 @@ import com.google.firebase.auth.FirebaseAuth
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: HomepageBinding
     private lateinit var tourAdapter: MyAdapter
-    private lateinit var sharedPreferences: SharedPreferences
 
     private val touralist = mutableListOf(
         Tour(
@@ -40,6 +38,48 @@ class MainActivity : AppCompatActivity() {
             imageResId = R.drawable.nile_cruise,
             price = "$300",
             description = "Enjoy a luxurious cruise on the Nile River, visiting key landmarks and enjoying scenic views of Egypt."
+        ),
+        Tour(
+            title = "Cairo City Exploration",
+            date = "October 12, 2024",
+            imageResId = R.drawable.cairo_city,
+            price = "$180",
+            description = "Immerse yourself in Cairo's vibrant culture, from bustling markets and historic mosques to modern attractions and stunning views."
+        ),
+        Tour(
+            title = "Red Sea Snorkeling",
+            date = "November 18, 2024",
+            imageResId = R.drawable.red_sea_snorkeling,
+            price = "$220",
+            description = "Dive into the crystal-clear waters of the Red Sea and explore colorful coral reefs and exotic marine life on this snorkeling adventure."
+        ),
+        Tour(
+            title = "Mount Sinai Sunrise Trek",
+            date = "December 24, 2024",
+            imageResId = R.drawable.mount_sinai,
+            price = "$200",
+            description = "Climb Mount Sinai under the stars and witness a spectacular sunrise from one of the most sacred spots in the world."
+        ),
+        Tour(
+            title = "White Desert Safari",
+            date = "January 8, 2025",
+            imageResId = R.drawable.white_desert,
+            price = "$350",
+            description = "Embark on a thrilling desert safari to the surreal White Desert, known for its unique chalk rock formations and serene beauty."
+        ),
+        Tour(
+            title = "Dahshur Pyramids Excursion",
+            date = "February 14, 2025",
+            imageResId = R.drawable.dahshur_pyramids,
+            price = "$170",
+            description = "Visit the Red Pyramid and Bent Pyramid at Dahshur, lesser-known gems of Egypt that showcase early pyramid construction techniques."
+        ),
+        Tour(
+            title = "St. Catherine's Monastery Visit",
+            date = "March 22, 2025",
+            imageResId = R.drawable.st_catherine_monastery,
+            price = "$130",
+            description = "Discover the ancient St. Catherine's Monastery at the foot of Mount Sinai, a UNESCO World Heritage Site filled with history and spirituality."
         )
     )
 
@@ -47,11 +87,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = HomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        sharedPreferences = getSharedPreferences("TourAppPrefs", MODE_PRIVATE)
-
-        if (!isUserLoggedIn()) {
-            navigateToLogin()
-        }
 
         // Set up Spinner
         val spinnerItems = listOf("Home Page", "Profile", "Tours Cart","Settings","Sign Out")
@@ -62,7 +97,11 @@ class MainActivity : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 when (position) {
                     0 -> Toast.makeText(this@MainActivity, "Home Page", Toast.LENGTH_SHORT).show()
-                    1 -> Toast.makeText(this@MainActivity, "Profile", Toast.LENGTH_SHORT).show()
+                    1 -> {
+                        // Navigate to UserProfileActivity
+                        val intent = Intent(this@MainActivity, UserProfileActivity::class.java)
+                        startActivity(intent)
+                    }
                     2 -> Toast.makeText(this@MainActivity, "Tours Cart", Toast.LENGTH_SHORT).show()
                     3 -> Toast.makeText(this@MainActivity, "Settings", Toast.LENGTH_SHORT).show()
                     4 ->signOut()
@@ -82,9 +121,7 @@ class MainActivity : AppCompatActivity() {
         binding.rvTours.adapter = tourAdapter
     }
 
-    private fun isUserLoggedIn(): Boolean {
-        return sharedPreferences.getBoolean("isLoggedIn", false)
-    }
+
 
     private fun navigateToLogin() {
         val intent = Intent(this, Login::class.java)
@@ -98,10 +135,6 @@ class MainActivity : AppCompatActivity() {
         builder.setTitle("Sign Out")
         builder.setMessage("Are you sure you want to sign out?")
         builder.setPositiveButton("Yes") { _, _ ->
-            // Clear login state
-            val editor = sharedPreferences.edit()
-            editor.putBoolean("isLoggedIn", false)
-            editor.apply()
 
             // Sign out from Firebase
             FirebaseAuth.getInstance().signOut()

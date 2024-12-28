@@ -13,7 +13,7 @@
     </style>
 
     <style name="BUTTON">
-        <item name="android:background">#423F3F</item>
+        <item name="android:background">#000000</item>
         <item name="android:textColor">#FFFFFF</item>
     </style>
 </resources>
