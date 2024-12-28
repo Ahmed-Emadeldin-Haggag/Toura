@@ -5,7 +5,7 @@
     android:id="@+id/login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    style="@style/SCREEN"
     tools:context=".Login">
 
     <ImageView
@@ -33,7 +33,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        android:importantForAccessibility="yes" />
+        android:importantForAccessibility="yes"
+        style="@style/TEXT"/>
 
 
     <EditText
@@ -49,7 +50,8 @@
         app:layout_constraintEnd_toEndOf="@+id/login_email"
         app:layout_constraintStart_toStartOf="@+id/login_email"
         app:layout_constraintTop_toBottomOf="@+id/login_email"
-        android:importantForAccessibility="yes" />
+        android:importantForAccessibility="yes"
+        style="@style/TEXT"/>
 
     <Button
         android:id="@+id/login_button"
@@ -61,7 +63,8 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/login_password"
         app:layout_constraintStart_toStartOf="@+id/login_password"
-        app:layout_constraintTop_toBottomOf="@+id/login_password" />
+        app:layout_constraintTop_toBottomOf="@+id/login_password"
+        style="@style/BUTTON"/>
 
     <ImageView
         android:id="@+id/imageView4"
@@ -79,11 +82,11 @@
         android:layout_marginTop="20dp"
         android:background="?android:attr/selectableItemBackground"
         android:text="Don't have an account? Sign Up"
-        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/login_button"
         app:layout_constraintStart_toStartOf="@+id/login_button"
-        app:layout_constraintTop_toBottomOf="@+id/login_button" />
+        app:layout_constraintTop_toBottomOf="@+id/login_button"
+        style="@style/BUTTON"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout >
