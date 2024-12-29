@@ -4,9 +4,9 @@ Below is an explanation for each feature listed in your project:
 
 ### 2. **User Profile**: page displays personal information about the logged-in user. This could include their name, contact information, preferences, and booking history.
 
-### 3. **Search Bar**: It allows users to quickly find specific content such as tours.
+### 3. **Booking Page Page**: allows users to make reservations and proceed through the booking process efficiently.
 
-### 4. **Settings**: page lets users customize their account preferences and manage app behavior. 
+### 4. **Customer Service**: provides users with easy access to support and assistance regarding any issues or inquiries
 
 ### 5. **Notification**: inform users about updates, reminders, or alerts related to their account or upcoming tours.
 
@@ -22,4 +22,3 @@ Below is an explanation for each feature listed in your project:
 
 ### 11. **Dark Mode**: theme setting that allows the user interface to switch to a darker color palette.
 
-### 12. **Get Location During the Trip**: This feature allows the app to access the user’s real-time location during the tour. 
