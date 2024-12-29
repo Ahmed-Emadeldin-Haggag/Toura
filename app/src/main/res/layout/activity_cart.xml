@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CartActivity"
+    tools:context=".ToursCartActivity"
     android:background="#F5F5F5">
 
     <!-- App Bar Section -->
@@ -27,8 +27,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
-            android:layout_gravity="center"
-            android:fontFamily="@font/montserrat" />
+            android:layout_gravity="center" />
     </LinearLayout>
 
     <!-- Card for RecyclerView -->
@@ -51,7 +50,7 @@
             android:padding="8dp"
             android:clipToPadding="false"
             android:overScrollMode="never"
-            tools:listitem="@layout/cart_item" />
+            tools:listitem="@layout/rv_touras_items" />
     </androidx.cardview.widget.CardView>
 
     <!-- Footer Section -->
@@ -75,8 +74,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/colorPrimary"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/montserrat" />
+            android:layout_marginBottom="8dp"/>
 
         <Button
             android:id="@+id/checkoutButton"
@@ -87,7 +85,6 @@
             android:textSize="16sp"
             android:backgroundTint="@color/colorPrimary"
             android:textColor="#FFFFFF"
-            android:elevation="8dp"
-            android:fontFamily="@font/montserrat" />
+            android:elevation="8dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

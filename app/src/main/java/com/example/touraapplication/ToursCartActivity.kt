@@ -1,71 +1,61 @@
-package com.example.toursapp
+package com.example.touraapplication
 
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class ToursCartActivity : AppCompatActivity() {
 
-    private lateinit var tour1Title: TextView
-    private lateinit var tour1Date: TextView
-    private lateinit var tour1Description: TextView
-    private lateinit var tour1Price: TextView
-    private lateinit var tour1Status: TextView
+    private lateinit var toursRecyclerView: RecyclerView
+    private lateinit var toursCartAdapter: ToursCartAdapter
 
-    private lateinit var tour2Title: TextView
-    private lateinit var tour2Date: TextView
-    private lateinit var tour2Description: TextView
-    private lateinit var tour2Price: TextView
-    private lateinit var tour2Status: TextView
-
-    private lateinit var tour3Title: TextView
-    private lateinit var tour3Date: TextView
-    private lateinit var tour3Description: TextView
-    private lateinit var tour3Price: TextView
-    private lateinit var tour3Status: TextView
+    // Sample Tour List
+    private val tourList = mutableListOf(
+        Tour(
+            title = "Cairo City Exploration",
+            date = "October 12, 2024",
+            imageResId = R.drawable.cairo_city,
+            price = "$180",
+            description = "Immerse yourself in Cairo's vibrant culture, from bustling markets and historic mosques to modern attractions and stunning views."
+        ),
+        Tour(
+            title = "Red Sea Snorkeling",
+            date = "November 18, 2024",
+            imageResId = R.drawable.red_sea_snorkeling,
+            price = "$220",
+            description = "Dive into the crystal-clear waters of the Red Sea and explore colorful coral reefs and exotic marine life on this snorkeling adventure."
+        ),
+        Tour(
+            title = "Mount Sinai Sunrise Trek",
+            date = "December 24, 2024",
+            imageResId = R.drawable.mount_sinai,
+            price = "$200",
+            description = "Climb Mount Sinai under the stars and witness a spectacular sunrise from one of the most sacred spots in the world."
+        )
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tours_cart)
 
-        // Rushing all the UI elements
-        tour1Title = findViewById(R.id.tour1Title)
-        tour1Date = findViewById(R.id.tour1Date)
-        tour1Description = findViewById(R.id.tour1Description)
-        tour1Price = findViewById(R.id.tour1Price)
-        tour1Status = findViewById(R.id.tour1Status)
+        // Initialize the RecyclerView
+        toursRecyclerView = findViewById(R.id.toursRecyclerView)
 
-        tour2Title = findViewById(R.id.tour2Title)
-        tour2Date = findViewById(R.id.tour2Date)
-        tour2Description = findViewById(R.id.tour2Description)
-        tour2Price = findViewById(R.id.tour2Price)
-        tour2Status = findViewById(R.id.tour2Status)
+        // Initialize the Adapter with the sample data
+        toursCartAdapter = ToursCartAdapter(tourList)
 
-        tour3Title = findViewById(R.id.tour3Title)
-        tour3Date = findViewById(R.id.tour3Date)
-        tour3Description = findViewById(R.id.tour3Description)
-        tour3Price = findViewById(R.id.tour3Price)
-        tour3Status = findViewById(R.id.tour3Status)
-
-        // Setting tour 1 (Luxor) data
-        tour1Title.text = "Luxor Tour"
-        tour1Date.text = "Date: 12/01/2024"
-        tour1Description.text = "Visit the magnificent temples of Luxor. A rich cultural experience!"
-        tour1Price.text = "Price: 1200 EGP"
-        tour1Status.text = "Status: Completed"
-
-        // Setting tour 2 (Giza)
-        tour2Title.text = "Giza Pyramids Tour"
-        tour2Date.text = "Date: 15/02/2024"
-        tour2Description.text = "Explore the ancient wonders of the Giza Pyramids."
-        tour2Price.text = "Price: 800 EGP"
-        tour2Status.text = "Status: Completed"
-
-        // Setting tour 3 (Dahab)
-        tour3Title.text = "Dahab Beach Tour"
-        tour3Date.text = "Date: 20/03/2024"
-        tour3Description.text = "Enjoy the serene beaches of Dahab, a perfect getaway."
-        tour3Price.text = "Price: 1000 EGP"
-        tour3Status.text = "Status: Pending Payment"
+        // Set up the RecyclerView
+        toursRecyclerView.layoutManager = LinearLayoutManager(this)
+        toursRecyclerView.adapter = toursCartAdapter
     }
+
+    // Data class for Tour
+    data class Tour(
+        val title: String,
+        val date: String,
+        val imageResId: Int,
+        val price: String,
+        val description: String
+    )
 }

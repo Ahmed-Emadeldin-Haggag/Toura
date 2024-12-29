@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
         createNotificationChannel()
 
         // Set up Spinner
-        val spinnerItems = listOf("Home Page", "Profile", "Tours Cart", "Settings","Add Payment Card", "Sign Out")
+        val spinnerItems = listOf("Home Page", "Profile","Registration Page", "Tours Cart","Add Payment Card","Explore Page", "Sign Out")
         val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerItems)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinner.adapter = spinnerAdapter
@@ -117,13 +117,17 @@ class MainActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
 
-                    2 -> Toast.makeText(this@MainActivity, "Tours Cart", Toast.LENGTH_SHORT).show()
-                    3 -> Toast.makeText(this@MainActivity, "Settings", Toast.LENGTH_SHORT).show()
+                    2 -> {val intent = Intent(this@MainActivity, TripsActivity::class.java)
+                        startActivity(intent)}
+                    3-> {val intent = Intent(this@MainActivity, ToursCartActivity::class.java)
+                        startActivity(intent)}
                     4->{
                         val intent = Intent(this@MainActivity, PaymentActivity::class.java)
                     startActivity(intent)
                 }
-                    5 -> signOut()
+                    5-> {val intent = Intent(this@MainActivity, ExploreActivity::class.java)
+                    startActivity(intent)}
+                6-> signOut()
 
                 }
             }
@@ -245,6 +249,7 @@ class MainActivity : AppCompatActivity() {
         val price: String,
         val description: String
     )
+
 
 
     override fun onBackPressed() {

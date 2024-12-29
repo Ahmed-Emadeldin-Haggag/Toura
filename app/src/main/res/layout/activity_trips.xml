@@ -21,7 +21,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:elevation="4dp"
         android:layout_centerHorizontal="true">
 
@@ -66,8 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pay Now"
-            android:background="#4CAF50"
-            android:textColor="#FFFFFF"/>
+            style="@style/BUTTON"/>
     </LinearLayout>
 
     <!-- Second Trip Box -->
@@ -87,7 +85,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:elevation="4dp"
         android:layout_centerHorizontal="true">
 
@@ -132,7 +129,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pay Now"
-            android:background="#4CAF50"
+            style="@style/BUTTON"
             android:textColor="#FFFFFF"/>
     </LinearLayout>
 
@@ -153,7 +150,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:elevation="4dp"
         android:layout_centerHorizontal="true">
 

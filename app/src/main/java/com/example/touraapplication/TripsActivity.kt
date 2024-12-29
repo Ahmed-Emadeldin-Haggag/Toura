@@ -1,7 +1,6 @@
 package com.example.touraapplication
 
-class TripsActivity {
-}
+
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
