@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
         createNotificationChannel()
 
         // Set up Spinner
-        val spinnerItems = listOf("Home Page", "Profile","Registration Page", "Tours Cart","Add Payment Card","Explore Page", "Customer Service","Sign Out")
+        val spinnerItems = listOf("Home Page", "Profile","Booking Page", "Tours Cart" ,"Add Payment Card","Explore Page", "Customer Service","Sign Out")
         val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerItems)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinner.adapter = spinnerAdapter
