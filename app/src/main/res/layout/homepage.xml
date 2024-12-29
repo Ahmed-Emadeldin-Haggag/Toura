@@ -20,6 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner"
         tools:itemCount="40"
+        style="@style/SCREEN"
         tools:listitem="@layout/rv_touras_items" />
 
     <Spinner
@@ -41,6 +42,7 @@
         app:layout_constraintEnd_toStartOf="@+id/spinner"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        style="@style/BUTTON"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <ImageView

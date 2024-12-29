@@ -3,18 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="#F9F9F9">
+    android:background="#F9F9F9"
+    style="@style/SCREEN">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
+        style="@style/SCREEN"
         android:padding="8dp">
 
         <!-- Header -->
         <TextView
             android:id="@+id/headerText"
+            style="@style/TEXT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -26,17 +29,18 @@
 
         <TextView
             android:id="@+id/descriptionText"
+            style="@style/TEXT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:text="We're here to assist you and resolve any issues within 24 hours. Please choose the relevant service below."
             android:textSize="16sp"
-            android:textColor="#666666"
             android:gravity="center" />
 
         <!-- Trips Service Box -->
         <LinearLayout
             android:id="@+id/serviceBox1"
+            style="@style/SCREEN"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -51,14 +55,14 @@
                 android:text="Trips Inquiries"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="#333333" />
+                style="@style/TEXT" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="For complaints or inquiries regarding trips, contact us at:"
                 android:textSize="14sp"
-                android:textColor="#666666"
+                style="@style/TEXT"
                 android:layout_marginTop="8dp" />
 
             <TextView
@@ -66,6 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="01062182129"
+                style="@style/TEXT"
                 android:textSize="16sp"
                 android:textColor="#1E88E5"
                 android:textStyle="bold"
@@ -79,6 +84,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/rounded_rectangle"
+            style="@style/SCREEN"
             android:padding="16dp"
             android:layout_marginBottom="16dp"
             android:elevation="4dp">
@@ -88,21 +94,22 @@
                 android:layout_height="wrap_content"
                 android:text="Hotels Inquiries"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#333333" />
+                style="@style/TEXT"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="For complaints or inquiries regarding hotels, contact us at:"
                 android:textSize="14sp"
-                android:textColor="#666666"
+                style="@style/TEXT"
                 android:layout_marginTop="8dp" />
 
             <TextView
                 android:id="@+id/serviceContact2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/TEXT"
                 android:text="01029174808"
                 android:textSize="16sp"
                 android:textColor="#1E88E5"
@@ -118,6 +125,7 @@
             android:orientation="vertical"
             android:background="@drawable/rounded_rectangle"
             android:padding="16dp"
+            style="@style/SCREEN"
             android:layout_marginBottom="16dp"
             android:elevation="4dp">
 
@@ -126,15 +134,15 @@
                 android:layout_height="wrap_content"
                 android:text="Technical Support"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#333333" />
+                style="@style/TEXT"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="For technical issues, contact us at:"
+                style="@style/TEXT"
                 android:textSize="14sp"
-                android:textColor="#666666"
                 android:layout_marginTop="8dp" />
 
             <TextView
@@ -142,6 +150,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="01062182230"
+                style="@style/TEXT"
                 android:textSize="16sp"
                 android:textColor="#1E88E5"
                 android:textStyle="bold"
@@ -155,6 +164,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/rounded_rectangle"
+            style="@style/SCREEN"
             android:padding="16dp"
             android:layout_marginBottom="16dp"
             android:elevation="4dp">
@@ -164,15 +174,15 @@
                 android:layout_height="wrap_content"
                 android:text="Financial Support"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#333333" />
+                style="@style/TEXT"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="For financial inquiries, contact us at:"
+                style="@style/TEXT"
                 android:textSize="14sp"
-                android:textColor="#666666"
                 android:layout_marginTop="8dp" />
 
             <TextView
@@ -181,6 +191,7 @@
                 android:layout_height="wrap_content"
                 android:text="01029143219"
                 android:textSize="16sp"
+                style="@style/TEXT"
                 android:textColor="#1E88E5"
                 android:textStyle="bold"
                 android:layout_marginTop="4dp" />

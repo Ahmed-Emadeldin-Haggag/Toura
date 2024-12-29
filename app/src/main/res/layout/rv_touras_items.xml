@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="20dp"
     android:layout_marginEnd="20dp"
+    style="@style/SCREEN"
     tools:context=".MainActivity">
 
 
@@ -36,6 +37,7 @@
         android:text="@string/place"
         android:textSize="18sp"
         android:textStyle="bold"
+        style="@style/TEXT"
         app:layout_constraintBottom_toTopOf="@+id/date"
         app:layout_constraintEnd_toStartOf="@+id/image"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,6 +52,7 @@
         android:layout_height="wrap_content"
         android:text="@string/date"
         android:textSize="14sp"
+        style="@style/TEXT"
         app:layout_constraintBottom_toTopOf="@+id/price"
         app:layout_constraintEnd_toEndOf="@+id/title"
         app:layout_constraintStart_toStartOf="@+id/title"
@@ -60,6 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        style="@style/SCREEN"
         app:layout_constraintGuide_end="0dp" />
 
     <!-- Price TextView -->
@@ -72,6 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/price"
+        style="@style/TEXT"
         app:layout_constraintBottom_toTopOf="@+id/description"
         app:layout_constraintEnd_toEndOf="@+id/date"
         app:layout_constraintStart_toStartOf="@+id/date"
@@ -84,6 +89,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         android:text="@string/description"
+        style="@style/TEXT"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/price"
         app:layout_constraintStart_toStartOf="@+id/price"

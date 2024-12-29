@@ -7,7 +7,9 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="20dp"
     android:layout_marginEnd="20dp"
-    tools:context=".ToursCartActivity">
+    tools:context=".ToursCartActivity"
+    style="@style/SCREEN"
+    >
 
     <!-- RecyclerView for displaying the list of tours -->
     <androidx.recyclerview.widget.RecyclerView
@@ -15,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="16dp"
+        style="@style/SCREEN"
         android:layout_marginBottom="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

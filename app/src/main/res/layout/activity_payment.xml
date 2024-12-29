@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/SCREEN"
     tools:context=".PaymentActivity">
 
     <!-- Title -->
@@ -12,9 +13,9 @@
         android:id="@+id/paymentTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/TEXT"
         android:text="Payment"
         android:textSize="24sp"
-        android:textColor="#4A90E2"
         android:fontFamily="sans-serif-medium"
         android:layout_marginTop="24dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,6 +28,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        style="@style/SCREEN"
         android:padding="16dp"
         app:layout_constraintTop_toBottomOf="@id/paymentTitle"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +40,7 @@
             android:layout_height="wrap_content"
             android:hint="Card Holder Name"
             app:boxBackgroundMode="outline"
+            style="@style/SCREEN"
             app:boxStrokeColor="#4A90E2">
 
             <EditText
@@ -45,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="12dp"
-                android:textColor="#333333"
+                style="@style/TEXT"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,6 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            style="@style/SCREEN"
             android:hint="Card Number"
             app:boxBackgroundMode="outline"
             app:boxStrokeColor="#4A90E2">
@@ -64,8 +68,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:maxLength="16"
+                style="@style/SCREEN"
                 android:padding="12dp"
-                android:textColor="#333333"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,6 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:hint="Expiry Date (MM/YY)"
+            style="@style/SCREEN"
             app:boxBackgroundMode="outline"
             app:boxStrokeColor="#4A90E2">
 
@@ -85,8 +90,8 @@
                 android:maxLength="5"
                 android:inputType="text"
                 android:digits="01/23456789"
+                style="@style/TEXT"
                 android:padding="12dp"
-                android:textColor="#333333"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,6 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            style="@style/SCREEN"
             android:hint="CVC Code"
             app:boxBackgroundMode="outline"
             app:boxStrokeColor="#4A90E2">
@@ -104,9 +110,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
+                style="@style/TEXT"
                 android:maxLength="4"
                 android:padding="12dp"
-                android:textColor="#333333"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -117,8 +123,8 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:text="Pay Now"
-        android:textColor="#FFFFFF"
         android:backgroundTint="#4A90E2"
+        style="@style/BUTTON"
         android:textSize="18sp"
         android:stateListAnimator="@null"
         app:layout_constraintTop_toBottomOf="@id/creditCardSection"

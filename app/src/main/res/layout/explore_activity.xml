@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    style="@style/SCREEN">
 
     <!-- Title -->
     <TextView
@@ -12,10 +13,9 @@
         android:layout_height="wrap_content"
         android:text="Explore"
         android:textSize="28sp"
-        android:textColor="#4A90E2"
-        android:fontFamily="sans-serif-medium"
         android:textStyle="bold"
         android:layout_marginTop="24dp"
+        style="@style/TEXT"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -30,6 +30,7 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/rounded_rectangle"
         android:elevation="8dp"
+        style="@style/TEXT"
         app:layout_constraintTop_toBottomOf="@id/exploreTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -40,8 +41,8 @@
             android:layout_height="wrap_content"
             android:text="Latest Updates from Our Social Media"
             android:textSize="20sp"
-            android:textColor="#1976D2"
             android:textStyle="bold"
+            style="@style/TEXT"
             android:layout_marginBottom="8dp" />
 
         <!-- Social Media Updates -->
@@ -51,7 +52,7 @@
             android:layout_height="wrap_content"
             android:text="📱 We just launched a new Instagram contest! Win a free trip to the Red Sea! 🎉"
             android:textSize="14sp"
-            android:textColor="#333333"
+            style="@style/TEXT"
             android:layout_marginBottom="8dp" />
 
         <TextView
@@ -60,7 +61,7 @@
             android:layout_height="wrap_content"
             android:text="🔔 Exciting news on our Twitter: We’re adding 3 new destinations this month!"
             android:textSize="14sp"
-            android:textColor="#333333"
+            style="@style/TEXT"
             android:layout_marginBottom="8dp" />
 
         <TextView
@@ -69,7 +70,7 @@
             android:layout_height="wrap_content"
             android:text="📣 Check out our Facebook post for exclusive deals on upcoming group tours!"
             android:textSize="14sp"
-            android:textColor="#333333"
+            style="@style/TEXT"
             android:layout_marginBottom="8dp" />
     </LinearLayout>
 
@@ -83,6 +84,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_rectangle"
         android:elevation="8dp"
+        style="@style/SCREEN"
         app:layout_constraintTop_toBottomOf="@id/latestUpdatesCard"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -93,8 +95,8 @@
             android:layout_height="wrap_content"
             android:text="New Trip Packages and Exclusive Deals"
             android:textSize="20sp"
-            android:textColor="#0288D1"
             android:textStyle="bold"
+            style="@style/TEXT"
             android:layout_marginBottom="8dp" />
 
         <!-- Trip Package Updates -->
@@ -104,7 +106,7 @@
             android:layout_height="wrap_content"
             android:text="🌴 A 7-day luxury trip to Sharm El Sheikh with all-inclusive amenities!"
             android:textSize="14sp"
-            android:textColor="#333333"
+            style="@style/TEXT"
             android:layout_marginBottom="8dp" />
 
         <TextView
@@ -113,7 +115,7 @@
             android:layout_height="wrap_content"
             android:text="🚤 Exclusive deal: Book a trip to Alexandria and get a free city tour!"
             android:textSize="14sp"
-            android:textColor="#333333"
+            style="@style/TEXT"
             android:layout_marginBottom="8dp" />
 
         <TextView
@@ -122,7 +124,7 @@
             android:layout_height="wrap_content"
             android:text="🏖️ Last-minute deal: 50% off on trips to the North Coast this weekend!"
             android:textSize="14sp"
-            android:textColor="#333333"
+            style="@style/TEXT"
             android:layout_marginBottom="8dp" />
 
         <TextView
@@ -131,7 +133,7 @@
             android:layout_height="wrap_content"
             android:text="🌅 Explore the Pyramids with a guided tour—special rates for groups!"
             android:textSize="14sp"
-            android:textColor="#333333"
+            style="@style/TEXT"
             android:layout_marginBottom="8dp" />
     </LinearLayout>
 
@@ -145,6 +147,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_rectangle"
         android:elevation="8dp"
+        style="@style/SCREEN"
         app:layout_constraintTop_toBottomOf="@id/newTripPackagesCard"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -155,8 +158,8 @@
             android:layout_height="wrap_content"
             android:text="Interactive Blog Posts"
             android:textSize="20sp"
-            android:textColor="#0288D1"
             android:textStyle="bold"
+            style="@style/TEXT"
             android:layout_marginBottom="8dp" />
 
         <!-- Blog Updates -->
@@ -166,7 +169,7 @@
             android:layout_height="wrap_content"
             android:text="📝 How to Choose the Best Beach Vacation in Egypt – A Complete Guide"
             android:textSize="14sp"
-            android:textColor="#333333"
+            style="@style/TEXT"
             android:layout_marginBottom="8dp" />
 
         <TextView
@@ -175,7 +178,7 @@
             android:layout_height="wrap_content"
             android:text="🌍 Top 5 Trending Destinations You Must Visit in 2024"
             android:textSize="14sp"
-            android:textColor="#333333"
+            style="@style/TEXT"
             android:layout_marginBottom="8dp" />
 
         <TextView
@@ -184,7 +187,7 @@
             android:layout_height="wrap_content"
             android:text="📖 The Ultimate Travel Guide to Luxor: Unveiling Ancient Wonders"
             android:textSize="14sp"
-            android:textColor="#333333"
+            style="@style/TEXT"
             android:layout_marginBottom="8dp" />
 
         <TextView
@@ -193,7 +196,7 @@
             android:layout_height="wrap_content"
             android:text="🏝️ The Best Hidden Gems for Luxury Escapes in Egypt"
             android:textSize="14sp"
-            android:textColor="#333333"
+            style="@style/TEXT"
             android:layout_marginBottom="8dp" />
     </LinearLayout>
 
@@ -227,7 +230,6 @@
             android:layout_height="wrap_content"
             android:text="Discover the best services we provide, from planning your perfect vacation to exclusive travel deals tailored to you."
             android:textSize="14sp"
-            android:textColor="#333333"
             android:layout_marginBottom="8dp" />
 
         <!-- New Button for Call-to-Action -->
@@ -237,7 +239,6 @@
             android:layout_height="wrap_content"
             android:text="Get Started"
             android:textSize="16sp"
-            android:textColor="#FFFFFF"
             android:backgroundTint="#4CAF50"
             android:layout_gravity="center" />
     </LinearLayout>
