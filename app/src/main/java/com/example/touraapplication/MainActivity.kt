@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
         createNotificationChannel()
 
         // Set up Spinner
-        val spinnerItems = listOf("Home Page", "Profile", "Tours Cart", "Settings", "Sign Out")
+        val spinnerItems = listOf("Home Page", "Profile", "Tours Cart", "Settings","Add Payment Card", "Sign Out")
         val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerItems)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinner.adapter = spinnerAdapter
@@ -119,7 +119,11 @@ class MainActivity : AppCompatActivity() {
 
                     2 -> Toast.makeText(this@MainActivity, "Tours Cart", Toast.LENGTH_SHORT).show()
                     3 -> Toast.makeText(this@MainActivity, "Settings", Toast.LENGTH_SHORT).show()
-                    4 -> signOut()
+                    4->{
+                        val intent = Intent(this@MainActivity, PaymentActivity::class.java)
+                    startActivity(intent)
+                }
+                    5 -> signOut()
 
                 }
             }
