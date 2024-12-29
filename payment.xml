@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PaymentActivity">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/paymentTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Payment"
+        android:textSize="24sp"
+        android:textColor="#4A90E2"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Credit Card Section -->
+    <LinearLayout
+        android:id="@+id/creditCardSection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/paymentTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/cardHolderLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Card Holder"
+            android:textSize="16sp"
+            android:textColor="#4A90E2"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/cardHolderInput"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Enter your name"
+            android:textColor="#333333"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/cardNumberLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Card Number"
+            android:textSize="16sp"
+            android:textColor="#4A90E2"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/cardNumberInput"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="  Enter Card Number"
+            android:inputType="number"
+            android:textColor="#333333"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/expiryDateLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Expiry Date"
+            android:textSize="16sp"
+            android:textColor="#4A90E2"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/expiryDateInput"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="MM/YY"
+            android:inputType="text"
+            android:textColor="#333333"
+            android:textSize="14sp"/>
+
+        <!-- CVC Code Section -->
+        <TextView
+            android:id="@+id/cvcLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CVC Code"
+            android:textSize="16sp"
+            android:textColor="#4A90E2"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/cvcInput"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="CVC"
+            android:inputType="number"
+            android:textColor="#333333"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <!-- Payment Button -->
+    <Button
+        android:id="@+id/payButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Pay Now"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#4A90E2"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/creditCardSection"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
