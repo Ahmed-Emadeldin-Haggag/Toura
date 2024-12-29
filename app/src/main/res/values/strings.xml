@@ -11,4 +11,10 @@
     <string name="description">Description</string>
     <string name="place">Place</string>
     <string name="e_mail">E-mail</string>
+    <string name="user_info_label">User Information</string>
+    <string name="booking_history_label">Booking History</string>
+    <string name="saved_favorites_label">Saved Favorites</string>
+    <string name="loading_user_info">Loading user information...</string>
+    <string name="no_booking_history">No booking history available.</string>
+    <string name="no_saved_favorites">No saved favorites available.</string>
 </resources>

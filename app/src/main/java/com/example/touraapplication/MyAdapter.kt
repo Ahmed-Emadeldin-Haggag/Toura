@@ -14,9 +14,12 @@ class MyAdapter(private var tourList: List<Tour>) : RecyclerView.Adapter<MyAdapt
         fun bind(tour:Tour){
             binding.title.text = tour.title
             binding.date.text = tour.date
+            binding.price.text = tour.price
+            binding.description.text = tour.description
             binding.image.setImageDrawable(
                 ContextCompat.getDrawable(binding.root.context, tour.imageResId)
             )
+
 
 
         }
