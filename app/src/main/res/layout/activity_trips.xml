@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- First Trip Box -->
+    <LinearLayout
+        android:id="@+id/firstTrip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:elevation="4dp"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/tripTitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Luxor Trip"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tripDate1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date: 25th December 2024"
+            android:textSize="16sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tripLocation1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location: Luxor, Egypt"
+            android:textSize="16sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tripDescription1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Explore the beauty of ancient Egypt with a luxurious trip to Luxor. Experience the wonders of the Valley of the Kings, Karnak Temple, and more."
+            android:textSize="14sp"
+            android:textColor="#777777"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/payButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pay Now"
+            android:background="#4CAF50"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+
+    <!-- Second Trip Box -->
+    <LinearLayout
+        android:id="@+id/secondTrip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        android:layout_below="@id/firstTrip"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:elevation="4dp"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/tripTitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giza Pyramids Trip"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tripDate2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date: 15th January 2025"
+            android:textSize="16sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tripLocation2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location: Giza, Egypt"
+            android:textSize="16sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tripDescription2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Visit the iconic Great Pyramids of Giza, the Sphinx, and other historic landmarks in this unforgettable trip."
+            android:textSize="14sp"
+            android:textColor="#777777"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/payButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pay Now"
+            android:background="#4CAF50"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+
+    <!-- Third Trip Box -->
+    <LinearLayout
+        android:id="@+id/thirdTrip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        android:layout_below="@id/secondTrip"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:elevation="4dp"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/tripTitle3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dahab Beach Trip"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tripDate3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date: 10th February 2025"
+            android:textSize="16sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tripLocation3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location: Dahab, Egypt"
+            android:textSize="16sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tripDescription3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A relaxing trip to Dahab with a beautiful beach, snorkeling, and lots of fun."
+            android:textSize="14sp"
+            android:textColor="#777777"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/payButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pay Now"
+            android:background="#4CAF50"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+
+</RelativeLayout>
