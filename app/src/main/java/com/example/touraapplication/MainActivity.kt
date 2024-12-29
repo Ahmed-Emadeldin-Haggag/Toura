@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
         createNotificationChannel()
 
         // Set up Spinner
-        val spinnerItems = listOf("Home Page", "Profile","Registration Page", "Tours Cart","Add Payment Card","Explore Page", "Sign Out")
+        val spinnerItems = listOf("Home Page", "Profile","Registration Page", "Tours Cart","Add Payment Card","Explore Page", "Customer Service","Sign Out")
         val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerItems)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinner.adapter = spinnerAdapter
@@ -127,7 +127,10 @@ class MainActivity : AppCompatActivity() {
                 }
                     5-> {val intent = Intent(this@MainActivity, ExploreActivity::class.java)
                     startActivity(intent)}
-                6-> signOut()
+
+                6-> {val intent = Intent(this@MainActivity, CustomerServiceActivity::class.java)
+                    startActivity(intent)}
+                7->  signOut()
 
                 }
             }
