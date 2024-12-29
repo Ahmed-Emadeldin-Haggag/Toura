@@ -1,7 +1,11 @@
 package com.example.touraapplication
 
-
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -9,6 +13,8 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.touraapplication.databinding.HomepageBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -89,13 +95,20 @@ class MainActivity : AppCompatActivity() {
         binding = HomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        createNotificationChannel()
+
         // Set up Spinner
-        val spinnerItems = listOf("Home Page", "Profile", "Tours Cart","Settings","Sign Out")
+        val spinnerItems = listOf("Home Page", "Profile", "Tours Cart", "Settings", "Sign Out")
         val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerItems)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinner.adapter = spinnerAdapter
         binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 when (position) {
                     0 -> Toast.makeText(this@MainActivity, "Home Page", Toast.LENGTH_SHORT).show()
                     1 -> {
@@ -103,24 +116,95 @@ class MainActivity : AppCompatActivity() {
                         val intent = Intent(this@MainActivity, UserProfileActivity::class.java)
                         startActivity(intent)
                     }
+
                     2 -> Toast.makeText(this@MainActivity, "Tours Cart", Toast.LENGTH_SHORT).show()
                     3 -> Toast.makeText(this@MainActivity, "Settings", Toast.LENGTH_SHORT).show()
-                    4 ->signOut()
+                    4 -> signOut()
 
                 }
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {
-            }
+            override fun onNothingSelected(parent: AdapterView<*>) {}
         }
-
 
 
         // Set up RecyclerView
         tourAdapter = MyAdapter(touralist)
         binding.rvTours.layoutManager = LinearLayoutManager(this)
         binding.rvTours.adapter = tourAdapter
+        // Trigger notification on button click (example)
+        binding.notifyButton.setOnClickListener {
+            sendNotification()
+        }
     }
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channelId = "tour_notifications"
+            val channelName = "Tour Notifications"
+            val channelDescription = "Notifications for tour updates"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(channelId, channelName, importance).apply {
+                description = channelDescription
+            }
+
+            val notificationManager: NotificationManager =
+                getSystemService(NotificationManager::class.java)
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
+    private fun sendNotification() {
+        val channelId = "tour_notifications"
+
+        // Check if the POST_NOTIFICATIONS permission is granted for Android 13+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 101)
+                return
+            }
+        }
+
+        // Intent to open MainActivity when the notification is clicked
+        val intent = Intent(this, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(
+            this, 0, intent, PendingIntent.FLAG_IMMUTABLE
+        )
+
+        val builder = NotificationCompat.Builder(this, channelId)
+            .setSmallIcon(android.R.drawable.ic_dialog_info) // Replace with a valid drawable
+            .setContentTitle("Tour Notification")
+            .setContentText("Check out the latest updates on our tours!")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+
+        with(NotificationManagerCompat.from(this)) {
+            notify(1, builder.build()) // Unique ID for each notification
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == 101) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission was granted, send the notification
+                sendNotification()
+            } else {
+                // Permission was denied, show a message or handle it
+                Toast.makeText(this, "Notification permission denied", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+
 
 
 
