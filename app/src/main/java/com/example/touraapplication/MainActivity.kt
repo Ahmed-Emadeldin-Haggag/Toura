@@ -10,18 +10,22 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Switch
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.touraapplication.databinding.HomepageBinding
 import com.google.firebase.auth.FirebaseAuth
+import androidx.appcompat.app.AlertDialog
+import androidx.preference.PreferenceManager
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: HomepageBinding
     private lateinit var tourAdapter: MyAdapter
+    private var modeMessage: String = ""
 
     private val touralist = mutableListOf(
         Tour(
@@ -95,6 +99,42 @@ class MainActivity : AppCompatActivity() {
         binding = HomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val darkModeSwitch: Switch = findViewById(R.id.switch_dark_mode)
+
+        // Load saved dark mode preference
+        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val isDarkMode = preferences.getBoolean("dark_mode", false)
+        darkModeSwitch.isChecked = isDarkMode
+
+        // Set the current night mode
+        AppCompatDelegate.setDefaultNightMode(
+            if (isDarkMode) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+        )
+
+        // Listen for changes in the switch
+        darkModeSwitch.setOnCheckedChangeListener { _, isChecked ->
+            // Apply dark or light mode
+            AppCompatDelegate.setDefaultNightMode(
+                if (isChecked) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+            )
+
+            // Save the dark mode preference
+            val editor = preferences.edit()
+            editor.putBoolean("dark_mode", isChecked)
+            editor.apply()
+
+            // Set the mode message based on the switch state
+            modeMessage = if (isChecked) {
+                "Dark Mode Enabled"
+            } else {
+                "Light Mode Enabled"
+            }
+
+            // Send notification with the mode message
+            sendNotification(modeMessage) // Pass the mode message here
+        }
+
+
         createNotificationChannel()
 
         // Set up Spinner
@@ -139,14 +179,13 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+
         // Set up RecyclerView
         tourAdapter = MyAdapter(touralist)
         binding.rvTours.layoutManager = LinearLayoutManager(this)
         binding.rvTours.adapter = tourAdapter
         // Trigger notification on button click (example)
-        binding.notifyButton.setOnClickListener {
-            sendNotification()
-        }
+
     }
 
     private fun createNotificationChannel() {
@@ -165,8 +204,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun sendNotification() {
-        val channelId = "tour_notifications"
+    private fun sendNotification(modeMessage: String) {
+        val channelId = "mode_notifications"
 
         // Check if the POST_NOTIFICATIONS permission is granted for Android 13+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -180,14 +219,16 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(
-            this, 0, intent, PendingIntent.FLAG_IMMUTABLE
-        )
+        val pendingIntent: PendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+        } else {
+            PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        }
 
         val builder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(android.R.drawable.ic_dialog_info) // Replace with a valid drawable
-            .setContentTitle("Tour Notification")
-            .setContentText("Check out the latest updates on our tours!")
+            .setContentTitle("Mode Changed")
+            .setContentText(modeMessage) // Set the mode message here
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
@@ -196,6 +237,7 @@ class MainActivity : AppCompatActivity() {
             notify(1, builder.build()) // Unique ID for each notification
         }
     }
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -207,7 +249,7 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == 101) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission was granted, send the notification
-                sendNotification()
+                sendNotification(modeMessage) // Now passing modeMessage
             } else {
                 // Permission was denied, show a message or handle it
                 Toast.makeText(this, "Notification permission denied", Toast.LENGTH_SHORT).show()
