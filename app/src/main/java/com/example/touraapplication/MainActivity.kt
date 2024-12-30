@@ -7,20 +7,21 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Switch
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.touraapplication.databinding.HomepageBinding
 import com.google.firebase.auth.FirebaseAuth
-import androidx.appcompat.app.AlertDialog
-import androidx.preference.PreferenceManager
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: HomepageBinding
@@ -190,9 +191,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channelId = "tour_notifications"
-            val channelName = "Tour Notifications"
-            val channelDescription = "Notifications for tour updates"
+            val channelId = "mode_notifications"
+            val channelName = "Mode Notifications"
+            val channelDescription = "Notifications for mode changes"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel(channelId, channelName, importance).apply {
                 description = channelDescription
@@ -215,6 +216,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        // If permission is granted, proceed with notification
+        sendNotificationContent(modeMessage)
+    }
+
+    private fun sendNotificationContent(modeMessage: String) {
+        val channelId = "mode_notifications"
+
         // Intent to open MainActivity when the notification is clicked
         val intent = Intent(this, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -225,6 +233,7 @@ class MainActivity : AppCompatActivity() {
             PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         }
 
+        // Build the notification
         val builder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(android.R.drawable.ic_dialog_info) // Replace with a valid drawable
             .setContentTitle("Mode Changed")
@@ -233,11 +242,11 @@ class MainActivity : AppCompatActivity() {
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
 
+        // Send the notification
         with(NotificationManagerCompat.from(this)) {
             notify(1, builder.build()) // Unique ID for each notification
         }
     }
-
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -249,17 +258,15 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == 101) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission was granted, send the notification
+                Log.d("MainActivity", "Notification permission granted")
                 sendNotification(modeMessage) // Now passing modeMessage
             } else {
                 // Permission was denied, show a message or handle it
+                Log.d("MainActivity", "Notification permission denied")
                 Toast.makeText(this, "Notification permission denied", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
-
-
-
 
     private fun navigateToLogin() {
         val intent = Intent(this, Login::class.java)
